@@ -9,3 +9,9 @@ This script uses the picamera2 library to examine a live video feed and identify
 
 # motion_notifier.py
 This script governs a simple Discord bot that periodically checks a specified directory for new files and sends them to a specified Discord user via direct message. Video files are deleted from the host's local storage as the idea here is to use Discord servers via the bot's chat message history as perpetual storage.
+
+# Issues I am having
+- My autofocus doesn't work
+    I'm not sure if I have a busted camera module or if I'm doing something wrong with the autofocus. I've tried a few fixes including setting a manual focus but it doesn't seem to work.
+- Motion detection threshold is not well tuned
+    I haven't done a ton of testing with the motion detection threshold because it is likely subject to the video feed's focal distance.
