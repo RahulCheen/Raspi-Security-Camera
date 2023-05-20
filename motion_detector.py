@@ -39,7 +39,7 @@ video_config = picam2.create_video_configuration(main={"size": (1280, 720), "for
 picam2.configure(video_config)
 picam2.set_controls({"FrameRate": frame_rate})
 picam2.set_controls({"AfMode": controls.AfModeEnum.Continuous})
-encoder = H264Encoder(bitrate=1000000, repeat=True)
+encoder = H264Encoder(bitrate=4000000, repeat=True)
 encoder.output = CircularOutput()
 picam2.encoder = encoder
 picam2.start()
@@ -65,7 +65,7 @@ while True:
                 print("Starting recording")
             ltime = time.time()
         else:
-            if encoding and time.time() - ltime > 10.0: # Records for 10 seconds
+            if encoding and time.time() - ltime > 5.0: # Stops recording after 5 seconds of no motion
                 print("Saving video")
                 encoder.output.stop()
                 encoding = False
@@ -83,3 +83,4 @@ while True:
     prev = cur
 
 picam2.stop_encoder()
+picam2.stop()
